@@ -120,11 +120,11 @@ if (isset($_SESSION["user_name"])) {
 		</div>
 	</div>
 	
-	<div class="container mt-5 ">
+	<!-- <div class="container mt-5 ">
 		<div class="col-md-6 m-auto col-12">
 			<img src="view/img/schema-comunicacao3.png" class="img-fluid">
 		</div>
-	</div> 
+	</div>  -->
 	
 <!--
 	<div class="p-5 p-md-0">
