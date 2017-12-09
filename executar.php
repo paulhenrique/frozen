@@ -9,26 +9,16 @@ $option         = "option=".$_POST["opt"];
 $ordem          = "ordem=".$_POST["ordemFeixes"];
 $user           = "usuario=".$_SESSION["user_name"];
 $comando = 'python fw.py '.$tipo.' '.$step." ".$option." ".$ordem." ".$user;
-echo $comando;
+echo $comando . "<br>";
 $retorno_python= shell_exec($comando);
 echo $retorno_python;
 
-include "conn.php";
-    $insert = "INSERT into charts (id_tipo_chart, dados, id_user) VALUES ('".$_POST["tipoFW"]."', '".$nome_arquivo."', '".$_SESSION["user_id"]."')";
-    $result = mysqli_query($conn, $insert);        
+// include "conn.php";
+    // $insert = "INSERT into charts (id_tipo_chart, dados, id_user) VALUES ('".$_POST["tipoFW"]."', '".$nome_arquivo."', '".$_SESSION["user_id"]."')";
+    // $result = mysqli_query($conn, $insert);        
 
-if(strpos($retorno_python,"]") !== false)
-    echo "<script>javascript:history.back()</script>";
-else
-    echo "string";
-?>
-<form method="post">
-	<input type="text" value="" name="" id="nome_arquivo">
-</form>
-<script type="text/javascript">
-	document.getElementById("nome_arquivo").value= nome_arquivo;
-	console.log(nome_arquivo);
-</script>
-<?php
-
+// if(strpos($retorno_python,"]") !== false)
+//     echo "<script>javascript:history.back()</script>";
+// else
+//     echo "<br> Não foi dessa vez :/";
 ?>

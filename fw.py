@@ -26,7 +26,7 @@ import multiprocessing
 from multiprocessing.pool import Pool
 from multiprocessing.pool import ThreadPool
 
-usuario_sistema = ""
+# usuario_sistema = ""
 
 def nope():
     stuff = ['I\'m sorry dave, I can\'t let you do that.',
@@ -87,6 +87,7 @@ def gerar_arquivo_json(nome_arquivo, matriz, titulos):
     arquivo.write(data)
     arquivo.close()
     print(data)
+    print("<br> python-print ============= gerar json ==== end <br>")
     return 1234
     print(nome_arquivo)
 
@@ -1076,10 +1077,12 @@ def tratar_entrada(entradas, atributo):
     return resultado
 
 if __name__=="__main__":
+
     while True:
+        
         try:
-            #tipo = int(input("Type of Frozen Wave: "))
             global usuario_sistema
+            #tipo = int(input("Type of Frozen Wave: "))
             usuario_sistema = tratar_entrada(sys.argv, "usuario")
         except ValueError:
             nope()
@@ -1121,7 +1124,7 @@ if __name__=="__main__":
             break
         
     if choice == 1:
-        print("1")
+        print("choice ====== 1")
         #step 200
         startall = timer()
         vBJx = []
@@ -1152,7 +1155,7 @@ if __name__=="__main__":
         #np.savetxt('BesselJ'+'_'+str(10*np.around(np.random.random_sample(), decimals=2))+'_'+str(date.today())+'_'+'r'+str(step)+'_'+'.json'+'IMOC', np.transpose([vBJx,vX]))            
         titulos = {"x(µm)":"Jn(x)"}
         vetores = dict(zip(vX,vBJx))
-        print("prexec json")
+        print("<br> python-print ============= gerar json start <br>")
         gerar_arquivo_json('BesselJ'+'_'+'r'+str(step)+'.json', vetores, titulos)
 
     elif choice == 2:
@@ -1497,6 +1500,7 @@ if __name__=="__main__":
         vetores2 = dict(zip(flin,zip(vgnmTME2,vgnmTMLA2)))
         gerar_arquivo_json('subplot'+'_'+'gnm'+'_'+'fig2'+'_'+str(10*np.around(np.random.random_sample(), decimals=2))+'_'+str(date.today())+'_'+'r'+str(step)+'.json', vetores2, titulos2)
     elif choice == 10:
+        print("choice ====== 10")
         #tipo = 4
         #ordem = 4
         #step = 150

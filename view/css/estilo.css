@@ -76,16 +76,16 @@ i.material-icons.big-icon {
 	background-repeat: no-repeat;
 }
 .phone-view::before {
-    content: "";
-    position: absolute;
-    top: 47px;
-    left: 11px;
-    background-size: 100%;
-    background-image: url(../img/exemp_mobile.gif);
-    background-repeat: no-repeat;
-    width: 86%;
-    height: 71%;
-    z-index: -1;
+	content: "";
+	position: absolute;
+	top: 47px;
+	left: 11px;
+	background-size: 100%;
+	background-image: url(../img/exemp_mobile.gif);
+	background-repeat: no-repeat;
+	width: 86%;
+	height: 71%;
+	z-index: -1;
 }
 .monitor {
 	background-image: url("../img/monitor_start.png");
@@ -264,6 +264,7 @@ i.material-icons.big-icon {
 	top: 5px;
 	font-size: 1.5rem;
 	display: none;
+	margin-top: 14px;
 }
 .content-toggle-menu{
 	display: none;
@@ -303,4 +304,20 @@ i.material-icons.big-icon {
 	.position-absolute{
 		position: relative;
 	}
+	.content-toggle-menu{
+		position: relative;
+		left: -10%;
+	}
+	.content-toggle-menu ul{
+		list-style: none;
+	}
+	.content-toggle-menu a{
+		color: #797575;
+	}
+	.content-toggle-menu li{
+		margin: 20px;
+	}
+	.main{
+		padding-top:0;
+	}	
 }

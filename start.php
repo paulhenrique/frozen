@@ -3,7 +3,6 @@ session_start();
 include'lib.php';
 if (!isset($_SESSION["user_id"])){
 	setAlert("login.php", 3);		
-	die();
 }
 ?>
 <!DOCTYPE html>
@@ -50,14 +49,11 @@ if (!isset($_SESSION["user_id"])){
 	</div>
 	<div class="bar-top box-shadow">
 		<h1><i class="fa fa-info-circle green-icon" aria-hidden="true"></i> <span class="label">Aplicações</span></h1>
-		<i class="fa fa-bell-o notification-icon" aria-hidden="true"></i>
+		<!-- <i class="fa fa-bell-o notification-icon" aria-hidden="true"></i> -->
 		<a class="btn-toggle-menu"><i class="fa fa-bars" aria-hidden="true"></i></a>
 		<div class="content-toggle-menu">
 			<ul class="tab-cog">
-				<li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?php echo $_SESSION["user_name"];?></span></a></li>
-				<li><a href="#inicio"><i class="fa fa-bar-chart" aria-hidden="true"></i> <span class="label">Inicio</span></a></li>
-				<li><a href="#generate-chart"><i class="fa fa-plus-circle" aria-hidden="true"></i> <span class="label">Novo Gráfico</span> </a></li>
-				<li><a href="#graficos"><i class="fa fa-cog" aria-hidden="true"></i> <span class="label">Gerenciar Gráficos</span></a></li>
+				<li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?php echo $_SESSION["user_name"];?></span></a></li>		
 			</ul>
 			<ul class="user-cog">
 				<li><a href="start.php"><i class="fa fa-th" aria-hidden="true"></i> <span class="label">Aplicações</span></a></li>

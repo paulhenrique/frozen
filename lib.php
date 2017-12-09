@@ -4,8 +4,8 @@ function alert($mensagem){
 	echo "<script>".$mensagem."</script>";
 }
 	function setAlert($page, $NumErro){ //Setar Alertas de erro e avisos via Get nas páginas
-		header("location:".$page."?alert=".$NumErro."");
-		// echo "<script>location.href='".$page."?alert=".$NumErro."'</script>";
+		// header("location:".$page."?alert=".$NumErro.""); //PROBLEMAS COM SERVICE WORKERS/APPCACHE
+		echo "<script>location.href='".$page."?alert=".$NumErro."'</script>";  //POSSÍVEL SOLUÇÃO
 	}
 
 function getAlert(){  //Verificar erros de acordo com o número
@@ -145,12 +145,11 @@ function listCharts(){
 			$ext = strtolower( pathinfo( $entry, PATHINFO_EXTENSION) );
 			if(in_array($ext, $types)) 
 				echo "<a class='btn-PreviewGraph t' data-file='".$entry."'>
-						<li class='list-group-item list-graph'> <i class='fa fa-line-chart'></i>  ".pathinfo($entry, PATHINFO_FILENAME)."</li>
-					   </a>";
+			<li class='list-group-item list-graph'> <i class='fa fa-line-chart'></i>  ".pathinfo($entry, PATHINFO_FILENAME)."</li>
+			</a>";
 
 		}
 		closedir($handle);
 	}    
-	echo "<script>console.log('ata')</script>";
 }
 ?>

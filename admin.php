@@ -1,13 +1,12 @@
+<!DOCTYPE html>
+<html>
 <?php
 session_start();
 include'lib.php';
 if (!isset($_SESSION["user_id"])){
 	setAlert("login.php", 3);		
-	die();
 }
 ?>
-<!DOCTYPE html>
-<html manifest="manifest.appcache">
 <head>
 	<title>Frozen Waves</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,16 +50,15 @@ if (!isset($_SESSION["user_id"])){
 			<li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> <span class="label">Sair</span></a></li>
 		</ul>
 	</div>
-	<div class="bar-top box-shadow">
+	<div class="bar-top box-shadow position-relative">
 		<h1><i class="fa fa-info-circle green-icon" aria-hidden="true"></i> <span class="label">Gráficos</span></h1>
-		<i class="fa fa-bell-o notification-icon" aria-hidden="true"></i>
 		<a class="btn-toggle-menu"><i class="fa fa-bars" aria-hidden="true"></i></a>
 		<div class="content-toggle-menu">
 			<ul class="tab-cog">
 				<li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?php echo $_SESSION["user_name"];?></span></a></li>
 				<li><a href="#inicio"><i class="fa fa-bar-chart" aria-hidden="true"></i> <span class="label">Inicio</span></a></li>
 				<li><a href="#generate-chart"><i class="fa fa-plus-circle" aria-hidden="true"></i> <span class="label">Novo Gráfico</span> </a></li>
-				<li><a href="#graficos"><i class="fa fa-cog" aria-hidden="true"></i> <span class="label">Gerenciar Gráficos</span></a></li>
+				<!-- <li><a href="#graficos"><i class="fa fa-cog" aria-hidden="true"></i> <span class="label">Gerenciar Gráficos</span></a></li> -->
 			</ul>
 			<ul class="user-cog">
 				<li><a href="start.php"><i class="fa fa-th" aria-hidden="true"></i> <span class="label">Aplicações</span></a></li>
@@ -69,9 +67,9 @@ if (!isset($_SESSION["user_id"])){
 			</ul>
 		</div>
 	</div>
-	<div class="main p-5">		
+	<div class="main p-md-5">		
 		<div id="inicio" class="show tab-content">
-			<div class="container mt-5 p-5 bg-white box-shadow border-radius">
+			<div class="container mt-md-5 p-md-5 bg-white box-shadow border-radius">
 				<div class="row justify-content-end pt-5">
 					<div class="col-12 col-md-8 rounded">
 						<div class="m-3 text-center" id="chart-dados"></div>
@@ -90,7 +88,7 @@ if (!isset($_SESSION["user_id"])){
 			</div>
 		</div>
 		<div id="generate-chart" class="tab-content">
-			<div class="container mt-5 bg-white box-shadow border-radius p-5">
+			<div class="container mt-md-5 bg-white box-shadow border-radius p-5">
 				<h1 class="f300">Novo Gráfico</h1>
 				<form method="post" action="executar.php">
 					<div class="row mt-5 ">
@@ -155,13 +153,13 @@ if (!isset($_SESSION["user_id"])){
 							<label for="rangeInicial">Range</label>
 							<div class="row">
 								<div class="col-12 col-md-6">
-									<input type="text" class="form-control  mb-sm-0 mt-0 mt-sm-2 mb-2" id="rangeInicial" placeholder="Inicial" name="rangeInicial">
+									<input type="number" class="form-control  mb-sm-0 mt-0 mt-sm-2 mb-2" id="rangeInicial" placeholder="Inicial" name="rangeInicial">
 								</div>
 								<div class="col-12 col-md-6">
-									<input type="text" class="form-control  mb-sm-0 mt-0 mt-sm-2 mb-2" id="rangeFinal" placeholder="Final" name="rangeFinal">
+									<input type="number" class="form-control  mb-sm-0 mt-0 mt-sm-2 mb-2" id="rangeFinal" placeholder="Final" name="rangeFinal">
 								</div>
 							</div>
-							<input type="text" class="col-12 col-md-3 form-control mt-0 mt-sm-2" id="passo" placeholder="Passo" name="passo"  data-toggle="tooltip" data-placement="bottom" title="Passo maior que 100">
+							<input type="number" class="col-12 col-md-3 form-control mt-0 mt-sm-2" id="passo" placeholder="Passo" name="passo"  data-toggle="tooltip" data-placement="bottom" title="Passo maior que 100">
 							<button type="submit"  class="btn btn-primary mt-2 mx-auto mx-sm-auto" >Processar</button>
 						</div>
 
@@ -179,8 +177,6 @@ if (!isset($_SESSION["user_id"])){
 <script type="text/javascript" src="view/js/c3.min.js"></script>
 <script type="text/javascript" src="view/js/spin.js"></script>
 <script type="text/javascript" src="view/js/app.js"></script>
-<script type="text/javascript" src="view/js/install.js"></script>
-<script type="text/javascript" src="service-worker.js"></script>
 <script type="text/javascript">
 	function gerarGrafico(file){
 

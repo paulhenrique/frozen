@@ -13,18 +13,18 @@ if (isset($_SESSION['user_name'])) {
 	<link rel="manifest" href="manifest.json">	
 	<!-- Add to homescreen for Chrome on Android -->
 	<meta name="mobile-web-app-capable" content="yes">
-	<link rel="icon" sizes="200x200" href="img/ico.png">
-	<meta name="theme-color" content="#292b2c">
+	<link rel="icon" sizes="200x200" href="view/img/logo-frozen-vetor.png">
+	<meta name="theme-color" content="white">
 
 	<!-- Add to homescreen for Safari on iOS -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-title" content="Project">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<link rel="apple-touch-icon-precomposed" href="view/img/ico.png">
+	<link rel="apple-touch-icon-precomposed" href="view/img/logo-frozen-vetor.png">
 
 	<!-- Tile icon for Win8 (144x144 + tile color) -->
-	<meta name="msapplication-TileImage" content="img/ico.png">
-	<meta name="msapplication-TileColor" content="#292b2c">
+	<meta name="msapplication-TileImage" content="img/logo-frozen-vetor.png">
+	<meta name="msapplication-TileColor" content="white">
 	
 	<link rel="stylesheet" type="text/css" href="view/css/tether.min.css">
 	<link rel="stylesheet" type="text/css" href="view/css/bootstrap.min.css">
@@ -56,9 +56,6 @@ if (isset($_SESSION['user_name'])) {
 		</div>
 	</div>	
 </body>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/tether.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/install.js"></script>
-<script type="text/javascript" src="service-worker.js"></script>
+<!-- <script type="text/javascript" src="view/js/install.js"></script> -->
+<!-- <script type="text/javascript" src="service-worker.js"></script> -->
 </html>

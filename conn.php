@@ -12,9 +12,10 @@ $dbname = "project_frozen";
 // Create connection
 $conn = new mysqli($servername, $username, $password,$dbname);
 // Cddheck connection
-if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-}else{
-	echo "Connect";
-}
+if ($conn->connect_error) 
+	die("Connection failed: " . $conn->connect_error);
+// else
+// 	echo "Connect";
+
+
 ?>

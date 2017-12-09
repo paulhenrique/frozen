@@ -26,7 +26,7 @@
 </head>
 <body class="text-dark">
 	<div class="container">
-		<div class="col-8 col-md-4 mx-auto mt-5 pt-5">
+		<div class="col-12 col-md-4 mx-auto mt-5 pt-5">
 			<h2 class="mt-5 thin">Cadastro</h2>
 			<form action="cadastrar.php" method="post">
 				<div class="input-group mt-4">
@@ -50,11 +50,9 @@
 		</div>
 	</div>	
 </body>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/tether.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/install.js"></script>
-<script type="text/javascript" src="service-worker.js"></script>
+<script type="text/javascript" src="view/js/jquery.min.js"></script>
+<script type="text/javascript" src="view/js/popper.min.js"></script>
+<script type="text/javascript" src="view/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	function validaSenha (input){ 
 		if (input.value != document.getElementById('txtSenha').value) {

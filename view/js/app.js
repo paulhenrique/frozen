@@ -39,17 +39,34 @@ $(".view-hidden").on("click", function(){
 	$(".view-hidden #foo").fadeOut("slow");
 });
 
+// $(".btn-toggle-menu").click($(".content-toggle-menu").toggle(function(){
+// 	$(this).hide("slow");
+// }, function(){
+// 	$(this).show("slow");
+// }));
+
 $(".btn-toggle-menu").on("click", function(){
-	$(".bar-top").toggleClass("position-relative");
-	$(".content-toggle-menu").slideToggle("slow");
-	
+	$(".content-toggle-menu").slideToggle();
 });
 
-	$(".sidebar .tab-cog li a").on("click", function(){
-		$(".sidebar .tab-cog li a").parent().removeClass("active");
-		$(this).parent().addClass("active");
-		var div = $(this).attr("href");
-		div = $(div);
+$(".sidebar .tab-cog li a").on("click", function(){
+	$(".sidebar .tab-cog li a").parent().removeClass("active");
+	$(this).parent().addClass("active");
+	var div = $(this).attr("href");
+	div = $(div);
+	$(".tab-content").removeClass("show");
+	div.addClass("show");
+});
+$(".content-toggle-menu li a").on("click", function(){
+		// console.log("ata");
+		// $(".content .tab-cog li a").parent().removeClass("active");
+		// $(this).parent().addClass("active");
+		var tex = $(this).attr("href");
+		div = $(tex);
 		$(".tab-content").removeClass("show");
 		div.addClass("show");
+		$(".btn-toggle-menu").click();
+		if( tex[0] == '#' )
+			return false;
+		
 	});

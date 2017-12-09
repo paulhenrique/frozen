@@ -1,77 +1,36 @@
 CACHE MANIFEST
 
-
-CACHE:
-  ./index.php
-  ./lib.php
-  ./admin.php
-  ./login.php
-  ./conn.php
-  ./graph.php
-  ./manifest.json
-  ./files.json
-  ./logout.php
-  ./service-worker.js
-  ./verifLogin.php
-  ./css/estilo.css
-  ./css/c3.min.css
-  ./css/bootstrap.min.css
-  ./css/font-awesome.min.css
-  ./css/bootstrap.css
-  ./css/tether.min.css
-  ./fonts/fontawesome-webfont.eot
-  ./fonts/fontawesome-webfont.svg
-  ./fonts/fontawesome-webfont.ttf
-  ./fonts/fontawesome-webfont.woff
-  ./fonts/fontawesome-webfont.woff2
-  ./fonts/FontAwesome.otf
-  ./img/bg.png
-  ./img/ico.png
-  ./js/app.js
-  ./js/bootstrap.js
-  ./js/bootstrap.min.js
-  ./js/c3.min.js
-  ./js/d3.min.js
-  ./js/graph.js
-  ./js/install.js
-  ./js/jquery.min.js
-  ./js/spin.js',
-  ./js/tether.min.js
-  ./less/animated.less
-  ./less/bordered-pulled.less
-  ./less/core.less
-  ./less/fixed-width.less
-  ./less/font-awesome.less
-  ./less/icons.less
-  ./less/larger.less
-  ./less/list.less
-  ./less/mixins.less
-  ./less/path.less
-  ./less/rotated-flipped.less
-  ./less/screen-reader.less
-  ./less/stacked.less
-  ./less/variables.less
-  ./scss/_animated.scss
-  ./scss/_bordered-pulled.scss
-  ./scss/_core.scss
-  ./scss/_fixed-width.scss
-  ./scss/_icons.scss
-  ./scss/_larger.scss
-  ./scss/_list.scss
-  ./scss/_mixins.scss
-  ./scss/_path.scss
-  ./scss/_rotated-flipped.scss
-  ./scss/_screen-reader.scss
-  ./scss/_stacked.scss
-  ./scss/_variables.scss
-  ./scss/font-awesome.scss
-
+./index.php
+./lib.php
+./login.php
+./cadastro.php
+./admin.php
+./verifLogin.php
+./conn.php
+./logout.php
+./fw.py
+./start.php
+./configuracoes.php
+./manifest.json
+./files.json
+./view/css/estilo.css
+./view/css/style.css
+./view/css/c3.min.css
+./view/css/bootstrap.min.css
+./view/css/font-awesome.min.css
+./view/fonts/fontawesome-webfont.woff
+./view/fonts/fontawesome-webfont.woff2
+./view/fonts/FontAwesome.otf
+./view/js/app.js
+./view/js/bootstrap.min.js
+./view/js/c3.min.js
+./view/js/d3.min.js
+./view/js/jquery.min.js
+./view/js/spin.js
+./view/img/
 
 NETWORK:
 *
 
-
 SETTINGS:
 prefer-online
-
-# hash: fb4337bb4b7ca55dca942234efcb592bf0b3d87e98083a1a864ff3e4ceda83ac
