@@ -51,6 +51,7 @@
 	</div>	
 </body>
 <script type="text/javascript" src="view/js/jquery.min.js"></script>
+<script type="text/javascript" src="view/js/smoothscroll.js"></script>
 <script type="text/javascript" src="view/js/popper.min.js"></script>
 <script type="text/javascript" src="view/js/bootstrap.min.js"></script>
 <script type="text/javascript">

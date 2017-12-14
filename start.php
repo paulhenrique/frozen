@@ -79,6 +79,7 @@ if (!isset($_SESSION["user_id"])){
 <script type="text/javascript" src="view/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="view/js/d3.min.js"></script>
 <script type="text/javascript" src="view/js/c3.min.js"></script>
+<script type="text/javascript" src="view/js/smoothscroll.js"></script>
 <script type="text/javascript" src="view/js/spin.js"></script>
 <script type="text/javascript" src="view/js/app.js"></script>
 <script type="text/javascript" src="view/js/install.js"></script>

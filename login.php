@@ -58,4 +58,5 @@ if (isset($_SESSION['user_name'])) {
 </body>
 <!-- <script type="text/javascript" src="view/js/install.js"></script> -->
 <!-- <script type="text/javascript" src="service-worker.js"></script> -->
+<script type="text/javascript" src="view/js/smoothscroll.js"></script>
 </html>
