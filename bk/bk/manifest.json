@@ -1,0 +1,15 @@
+{
+  "short_name": "Frozen",
+  "name": "Projeto Frozen",
+  "icons": [
+    {
+      "src": "view/img/ico-frozen-vetor.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.php",
+  "display": "standalone",
+  "theme_color": "white",
+  "background_color": "white"
+}

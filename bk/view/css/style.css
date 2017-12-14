@@ -1,0 +1,150 @@
+/*Definições de fonte e corpo gerais*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i');
+* {
+	font-size: 91%;
+}
+body{
+	font-family: "Roboto", sans-serif;
+	font-size: 2rem;
+}
+h1, h2. h3, h4, h5{
+	font-family: "Roboto", sans-serif;
+}
+.thin{
+	font-weight: 100;
+}
+.uppercase{
+	text-transform: uppercase;
+}
+.position-relative{
+	position: relative;
+}
+.position-absolute{
+	position: absolute;
+}
+.r-0{
+	right: 0;
+}
+.bg-black{
+	background:black !important;
+}
+.mt-10, .mt-md-10{
+	margin-top: 10rem !important;
+}
+.pt-10{
+	padding-top: 10rem !important;
+}
+.pb-10{
+	padding-bottom: 10rem !important;
+}
+/*DEFINIÇÕES DA PÁGINA INICIAL ===================================*/
+.header {
+    background-image: url(../img/bg.png);
+    background-size: cover;
+    min-height: 500px;
+    padding-top: 5rem !important;
+    -webkit-filter: hue-rotate(332deg);
+    filter: hue-rotate(332deg);
+}
+.header img {
+    filter: brightness(7);
+}
+
+.bloco-pesquisador{
+    background-image: url(../img/pesquisadores/bg1.jpg);
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: 0 -81px;
+    box-shadow: 0px 0px 12px -5px;
+}
+
+.phone-view{
+	background-image: url("../img/nexus5x_start.png");
+	position: relative;
+	margin:0 auto;
+	max-width: 300px;
+	width: 100%;
+	min-height: 300px;
+	height: 100%;
+	background-size: 95%;
+	background-repeat: no-repeat;
+}
+.phone-view::before {
+    content: "";
+    position: absolute;
+    top: 47px;
+    left: 11px;
+    background-size: 100%;
+    background-image: url(../img/exemp_mobile.gif);
+    background-repeat: no-repeat;
+    width: 86%;
+    height: 71%;
+    z-index: -1;
+}
+.border-header{
+	border-top: 5px #4daec3 solid;
+}
+.text-blue{
+	color: #4daec3 !important;
+}
+.exemplos{
+	height: 400px;
+	text-align: center;
+}
+.exemplos div{
+	width:300px;
+	height: 100%;
+	z-index: 3;
+	width: 580px;
+	border-radius: 20px;
+}
+.exemplos div.center{
+	display: inline-block;
+	margin: 0 auto;
+	width: 700px;
+}
+.exemplos div:first-child{
+	position: absolute;
+	left: 10px;
+	width: 580px;
+	z-index: 2;
+	top: 50px;
+}
+.exemplos div:last-child{
+	position: absolute;
+	right: 10px;
+	width: 580px;
+	z-index: 2;
+	top: 50px;
+}
+.monitor {
+	background-image: url("../img/monitor_start.png");
+	margin: 0 auto;
+	max-width: 700px;
+	width: 100%;
+	min-height: 700px;
+	height: 100%;
+	background-size: 100%;
+	position: relative;
+	background-repeat: no-repeat;
+}
+.monitor::before {
+    content: "";
+    background: url(../img/exemp2.gif);
+    position: absolute;
+    left: 25px;
+    top: 22px;
+    width: 91%;
+    height: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+@media (max-width: 720px){
+	.hide-md{
+		display: none;
+	}
+	.mt-md-10{
+		margin-top: 0;
+	}
+}
