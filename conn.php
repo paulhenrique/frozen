@@ -5,8 +5,8 @@
 // $dbname = "project_frozen";
 
 $servername = "localhost";
-$username = "root";
-$password = "123";
+$username = "frozen";
+$password = "FW.2017.IFSP";
 $dbname = "project_frozen";
 
 // Create connection
