@@ -25,4 +25,3 @@ if(isset($_POST["senha"]) && isset($_POST["email"])){
 }
 $conn->close();
 ?>
-

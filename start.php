@@ -2,7 +2,7 @@
 session_start();
 include'lib.php';
 if (!isset($_SESSION["user_id"])){
-	setAlert("login.php", 3);		
+	setAlert("login.php", 3);
 }
 ?>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ if (!isset($_SESSION["user_id"])){
 	<!-- Tile icon for Win8 (144x144 + tile color) -->
 	<meta name="msapplication-TileImage" content="img/ico.png">
 	<meta name="msapplication-TileColor" content="#292b2c">
-	
+
 	<link rel="stylesheet" type="text/css" href="view/css/tether.min.css">
 	<link rel="stylesheet" type="text/css" href="view/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="view/css/font-awesome.min.css">
@@ -53,7 +53,7 @@ if (!isset($_SESSION["user_id"])){
 		<a class="btn-toggle-menu"><i class="fa fa-bars" aria-hidden="true"></i></a>
 		<div class="content-toggle-menu">
 			<ul class="tab-cog">
-				<li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?php echo $_SESSION["user_name"];?></span></a></li>		
+				<li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?php echo $_SESSION["user_name"];?></span></a></li>
 			</ul>
 			<ul class="user-cog">
 				<li><a href="start.php"><i class="fa fa-th" aria-hidden="true"></i> <span class="label">Aplicações</span></a></li>
@@ -63,15 +63,20 @@ if (!isset($_SESSION["user_id"])){
 		</div>
 	</div>
 
-	<div class="main mt-5">
+	<div class="main p-5">
 		<!-- <h3 class="thin mt-5">Painel de Aplicações</h3> -->
-		<div class="mt-5">
-			<div class="col-3 m-5">
-				<a href="admin.php">
+		<div class="mt-5 row">
+			<div class="col-3">
+				<a href="frozen-IFSP.php">
 					<img class="box-shadow card-img-top border-radius" src="view/img/logo_frozen.png" alt="Card image cap">
 				</a>
 			</div>
-		</div>	
+			<div class="col-3">
+				<a href="frozen-USP.php">
+					<img class="box-shadow card-img-top border-radius" src="view/img/logo_frozen.png" alt="Card image cap">
+				</a>
+			</div>
+		</div>
 	</div>
 </body>
 <script type="text/javascript" src="view/js/jquery.min.js"></script>
@@ -85,4 +90,3 @@ if (!isset($_SESSION["user_id"])){
 <script type="text/javascript" src="view/js/install.js"></script>
 <script type="text/javascript" src="service-worker.js"></script>
 </html>
-

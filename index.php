@@ -109,9 +109,9 @@ if (isset($_SESSION["user_name"])) {
 				</div>
 			</div>
 		</div>
-		<div class="pt-1 container-fluid">
-			<p class="lead">v0.01</p>
-		</div>
+		//<div class="pt-1 container-fluid">
+		//	<p class="lead">v0.01</p>
+		//</div>
 	</body>
 	<script type="text/javascript" src="view/js/jquery.min.js"></script>
 	<script type="text/javascript" src="view/js/smoothscroll.js"></script>
