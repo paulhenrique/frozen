@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html manifest="appcache.manifest">
 <?php
-include'lib.php';
-if (isset($_SESSION["user_name"])) {
-	header("location: admin.php");			
+include'controller/lib.php';
+if(isset($_SESSION["user"])){
+	header("location: applications/");
 }
 ?>
-
 <head>
 	<title>Frozen Waves</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	<link rel="manifest" href="manifest.json">
-	
+
 	<meta name="mobile-web-app-capable" content="yes">
 	<link rel="icon" sizes="200x200" href="view/img/ico-frozen-vetor.png">
 	<meta name="theme-color" content="#ffffff">
