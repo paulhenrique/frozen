@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
 <?php
-session_start();
-include'lib.php';
-if (!isset($_SESSION["user_id"])){
-	setAlert("login.php", 3);
-}
+include'../controller/lib.php';
+if (!isset($_SESSION["user"]))
+	header("location: ../")
 ?>
 <head>
 	<title>Frozen Waves</title>
@@ -28,42 +26,43 @@ if (!isset($_SESSION["user_id"])){
 	<meta name="msapplication-TileImage" content="img/ico.png">
 	<meta name="msapplication-TileColor" content="#292b2c">
 
-	<link rel="stylesheet" type="text/css" href="view/css/tether.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/c3.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/tether.min.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/c3.min.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/style.css">
 </head>
 <body class="bg-light">
 	<div class="sidebar">
 		<h1 >Frozen Waves IFSP</h1>
 		<ul class="border-list">
-			<li><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?php echo $_SESSION["user_name"];?></span></a></li>
+			<li><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?= $_SESSION["user"]["nome"];?></span></a></li>
 		</ul>
 		<ul class="tab-cog">
 			<li class="active"><a href="#inicio"><i class="fa fa-bar-chart" aria-hidden="true"></i> <span class="label">Inicio</span></a></li>
 			<li><a href="#generate-chart"><i class="fa fa-plus-circle" aria-hidden="true"></i> <span class="label">Novo Gráfico</span> </a></li>
 		</ul>
 		<ul class="">
-			<li><a href="start.php"><i class="fa fa-th" aria-hidden="true"></i> <span class="label">Aplicações</span></a></li>
-			<li><a href="configuracoes.php"><i class="fa fa-cog" aria-hidden="true"></i> <span class="label">Configurações</span></a></li>
-			<li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> <span class="label">Sair</span></a></li>
+			<li><a href="index.php"><i class="fa fa-th" aria-hidden="true"></i> <span class="label">Aplicações</span></a></li>
+			<li><a href="../configuracoes.php"><i class="fa fa-cog" aria-hidden="true"></i> <span class="label">Configurações</span></a></li>
+			<li><a href="../controller/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> <span class="label">Sair</span></a></li>
 		</ul>
 	</div>
-	<div class="bar-top box-shadow position-relative">
+	<div class="bar-top box-shadow">
 		<h1><i class="fa fa-info-circle green-icon" aria-hidden="true"></i> <span class="label">Gráficos</span></h1>
 		<a class="btn-toggle-menu"><i class="fa fa-bars" aria-hidden="true"></i></a>
 		<div class="content-toggle-menu">
 			<ul class="tab-cog">
-				<li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?php echo $_SESSION["user_name"];?></span></a></li>
+				<li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?= $_SESSION["user"]["nome"];?></span></a></li>
 				<li><a href="#inicio"><i class="fa fa-bar-chart" aria-hidden="true"></i> <span class="label">Inicio</span></a></li>
 				<li><a href="#generate-chart"><i class="fa fa-plus-circle" aria-hidden="true"></i> <span class="label">Novo Gráfico</span> </a></li>
 				<!-- <li><a href="#graficos"><i class="fa fa-cog" aria-hidden="true"></i> <span class="label">Gerenciar Gráficos</span></a></li> -->
 			</ul>
 			<ul class="user-cog">
-				<li><a href="start.php"><i class="fa fa-th" aria-hidden="true"></i> <span class="label">Aplicações</span></a></li>
-				<li><a href="configuracoes.php"><i class="fa fa-cog" aria-hidden="true"></i> <span class="label">Configurações</span></a></li>
-				<li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> <span class="label">Sair</span></a></li>
+				<li><a href="index.php"><i class="fa fa-th" aria-hidden="true"></i> <span class="label">Aplicações</span></a></li>
+				<li><a href="../configuracoes.php"><i class="fa fa-cog" aria-hidden="true"></i> <span class="label">Configurações</span></a></li>
+				<li><a href="../controller/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> <span class="label">Sair</span></a></li>
 			</ul>
 		</div>
 	</div>
@@ -80,8 +79,16 @@ if (!isset($_SESSION["user_id"])){
 						<h4 class="thin">Chart List</h4>
 						<ul class="list-group mt-3 list-chart">
 							<?php
-							listCharts();
-							?>
+									$data = create_list_charts();
+										foreach ($data as $entry):
+										$item["src"] = $entry;
+										$item["title"] = pathinfo($entry, PATHINFO_FILENAME);
+								?>
+							<a class='btn-PreviewGraph' data-file="<?= $item["src"] ?>">
+								<li class='list-group-item list-graph'> <i class='fa fa-line-chart'></i><?= $item["title"] ?></li>
+							</a>
+						<?php endforeach; ?>
+
 						</ul>
 					</div>
 				</div>
@@ -170,22 +177,22 @@ if (!isset($_SESSION["user_id"])){
 	</div>	<!-- container generate graph -->
 </div>
 </body>
-<script type="text/javascript" src="view/js/jquery.min.js"></script>
-<script type="text/javascript" src="view/js/popper.min.js"></script>
-<script type="text/javascript" src="view/js/smoothscroll.js"></script>
-<script type="text/javascript" src="view/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="view/js/d3.min.js"></script>
-<script type="text/javascript" src="view/js/c3.min.js"></script>
-<script type="text/javascript" src="view/js/spin.js"></script>
-<script type="text/javascript" src="view/js/app.js"></script>
+<script type="text/javascript" src="../view/js/jquery.min.js"></script>
+<script type="text/javascript" src="../view/js/popper.min.js"></script>
+<script type="text/javascript" src="../view/js/smoothscroll.js"></script>
+<script type="text/javascript" src="../view/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../view/js/d3.min.js"></script>
+<script type="text/javascript" src="../view/js/c3.min.js"></script>
+<script type="text/javascript" src="../view/js/spin.js"></script>
+<script type="text/javascript" src="../view/js/app.js"></script>
 <script type="text/javascript">
 	function gerarGrafico(file){
 
 		var col1 = ['col1'],
 		col2 = ['col2'];
 
-		var user = "<?= $_SESSION["user_name"]; ?>";
-		$.getJSON("./users/"+user+"/"+file+"", function (resultado) {
+		var user = "<?= $_SESSION["user"]["user"]; ?>";
+		$.getJSON("../users/"+user+"/"+file+"", function (resultado) {
 
 			$.each(resultado[0], function(index, value){
 				$("#chart-dados").html(value);

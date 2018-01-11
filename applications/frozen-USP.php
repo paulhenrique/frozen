@@ -1,13 +1,10 @@
-<?php
-session_start();
-include'lib.php';
-if (!isset($_SESSION["user_id"])){
-	setAlert("login.php", 3);		
-	die();
-}
-?>
 <!DOCTYPE html>
-<html manifest="manifest.appcache">
+<html>
+<?php
+include'../controller/lib.php';
+if (!isset($_SESSION["user"]))
+	header("location: ../");
+?>
 <head>
 	<title>Frozen Waves</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,53 +25,66 @@ if (!isset($_SESSION["user_id"])){
 	<!-- Tile icon for Win8 (144x144 + tile color) -->
 	<meta name="msapplication-TileImage" content="img/ico.png">
 	<meta name="msapplication-TileColor" content="#292b2c">
-	
-	<link rel="stylesheet" type="text/css" href="view/css/tether.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/c3.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/estilo.css">
+
+	<link rel="stylesheet" type="text/css" href="../view/css/tether.min.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/c3.min.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/estilo.css">
 </head>
-<body>	
+<body class="bg-light">
 	<div class="sidebar">
+		<h1 >Frozen Waves - USP</h1>
+		<ul class="border-list">
+			<li><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?= $_SESSION["user"]["nome"];?></span></a></li>
+		</ul>
 		<ul class="tab-cog">
-			<li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> <?php echo $_SESSION["user_name"]; ?></a></li>
-			<li><a href="#inicio"><i class="fa fa-bar-chart" aria-hidden="true"></i> Inicio</a></li>
-			<li><a href="#generate-chart"><i class="fa fa-plus-circle" aria-hidden="true"></i> Novo Gráfico</a></li>
-			<li><a href="#graficos"><i class="fa fa-cog" aria-hidden="true"></i> Gerenciar Gráficos</a></li>
+			<li class="active"><a href="#inicio"><i class="fa fa-bar-chart" aria-hidden="true"></i> <span class="label">Inicio</span></a></li>
+			<li><a href="#generate-chart"><i class="fa fa-plus-circle" aria-hidden="true"></i> <span class="label">Novo Gráfico</span> </a></li>
 		</ul>
-		<ul class="user-cog">
-			
-			<li><a href="configuracoes.php"><i class="fa fa-cog" aria-hidden="true"></i> Configurações</a></li>
-			<li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a></li>
+		<ul class="">
+			<li><a href="index.php"><i class="fa fa-th" aria-hidden="true"></i> <span class="label">Aplicações</span></a></li>
+			<li><a href="../configuracoes.php"><i class="fa fa-cog" aria-hidden="true"></i> <span class="label">Configurações</span></a></li>
+			<li><a href="../controller/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> <span class="label">Sair</span></a></li>
 		</ul>
 	</div>
-	<div class="bar-top">
-		<p class="thin"><i class="fa fa-area-chart" aria-hidden="true"></i> Frozen Waves - Inicio</p>
+	<div class="bar-top box-shadow">
+		<h1><i class="fa fa-info-circle green-icon" aria-hidden="true"></i> <span class="label">Gráficos</span></h1>
+		<a class="btn-toggle-menu"><i class="fa fa-bars" aria-hidden="true"></i></a>
+		<div class="content-toggle-menu">
+			<ul class="tab-cog">
+				<li><a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?= $_SESSION["user"]["nome"];?></span></a></li>
+				<li><a href="#inicio"><i class="fa fa-bar-chart" aria-hidden="true"></i> <span class="label">Inicio</span></a></li>
+				<li><a href="#generate-chart"><i class="fa fa-plus-circle" aria-hidden="true"></i> <span class="label">Novo Gráfico</span> </a></li>
+				<!-- <li><a href="#graficos"><i class="fa fa-cog" aria-hidden="true"></i> <span class="label">Gerenciar Gráficos</span></a></li> -->
+			</ul>
+			<ul class="user-cog">
+				<li><a href="index.php"><i class="fa fa-th" aria-hidden="true"></i> <span class="label">Aplicações</span></a></li>
+				<li><a href="../configuracoes.php"><i class="fa fa-cog" aria-hidden="true"></i> <span class="label">Configurações</span></a></li>
+				<li><a href="../controller/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> <span class="label">Sair</span></a></li>>
+			</ul>
+		</div>
 	</div>
-	<div class="main">
-		
+	<div class="main p-md-5">
 		<div id="inicio" class="show tab-content">
-			<div class="container tab-pane fade show active" role="tabpanel" id="graphs">
+			<div class="container mt-md-5 p-md-5 bg-white box-shadow border-radius">
 				<div class="row justify-content-end pt-5">
 					<div class="col-12 col-md-8 rounded">
 						<div class="m-3 text-center" id="chart-dados"></div>
 						<div id="chart">
-						</div>	
+						</div>
 					</div>
 					<div class="col-12 col-md-4">
 						<h4 class="thin">Chart List</h4>
 						<ul class="list-group mt-3 list-chart">
-							<?php 
-							listCharts();
-							?>
+
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div id="generate-chart" class="tab-content">
-			<div class="container mt-5">
+			<div class="container mt-md-5 bg-white box-shadow border-radius p-5">
 				<h1 class="f300">Novo Gráfico</h1>
 				<form method="post" action="executar.php">
 					<div class="row mt-5 ">
@@ -139,13 +149,13 @@ if (!isset($_SESSION["user_id"])){
 							<label for="rangeInicial">Range</label>
 							<div class="row">
 								<div class="col-12 col-md-6">
-									<input type="text" class="form-control  mb-sm-0 mt-0 mt-sm-2 mb-2" id="rangeInicial" placeholder="Inicial" name="rangeInicial">
+									<input type="number" class="form-control  mb-sm-0 mt-0 mt-sm-2 mb-2" id="rangeInicial" placeholder="Inicial" name="rangeInicial">
 								</div>
 								<div class="col-12 col-md-6">
-									<input type="text" class="form-control  mb-sm-0 mt-0 mt-sm-2 mb-2" id="rangeFinal" placeholder="Final" name="rangeFinal">
+									<input type="number" class="form-control  mb-sm-0 mt-0 mt-sm-2 mb-2" id="rangeFinal" placeholder="Final" name="rangeFinal">
 								</div>
 							</div>
-							<input type="text" class="col-12 col-md-3 form-control mt-0 mt-sm-2" id="passo" placeholder="Passo" name="passo"  data-toggle="tooltip" data-placement="bottom" title="Passo maior que 100">
+							<input type="number" class="col-12 col-md-3 form-control mt-0 mt-sm-2" id="passo" placeholder="Passo" name="passo"  data-toggle="tooltip" data-placement="bottom" title="Passo maior que 100">
 							<button type="submit"  class="btn btn-primary mt-2 mx-auto mx-sm-auto" >Processar</button>
 						</div>
 
@@ -156,44 +166,36 @@ if (!isset($_SESSION["user_id"])){
 	</div>	<!-- container generate graph -->
 </div>
 </body>
-<script type="text/javascript" src="view/js/jquery.min.js"></script>
-<script type="text/javascript" src="view/js/popper.min.js"></script>
-<script type="text/javascript" src="view/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="view/js/d3.min.js"></script>
-<script type="text/javascript" src="view/js/c3.min.js"></script>
-<script type="text/javascript" src="view/js/spin.js"></script>
-<script type="text/javascript" src="view/js/app.js"></script>
-<script type="text/javascript" src="view/js/install.js"></script>
-<script type="text/javascript" src="service-worker.js"></script>
+<script type="text/javascript" src="../view/js/jquery.min.js"></script>
+<script type="text/javascript" src="../view/js/popper.min.js"></script>
+<script type="text/javascript" src="../view/js/smoothscroll.js"></script>
+<script type="text/javascript" src="../view/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../view/js/d3.min.js"></script>
+<script type="text/javascript" src="../view/js/c3.min.js"></script>
+<script type="text/javascript" src="../view/js/spin.js"></script>
+<script type="text/javascript" src="../view/js/app.js"></script>
 <script type="text/javascript">
-	function gerarGrafico(file){
+function gerarGrafico(file){
+  var user = "<?=$_SESSION["user_name"]?>";
+  $.getJSON("./users/"+user+"/"+file+"", function (resultado) {
+    var title   = resultado.title,
+        labels  = resultado.labels,
+        data    = resultado.data;
+        shape    = resultado.shape;
 
-		var col1 = ['col1'],
-		col2 = ['col2'];
+    var col = data[1];
 
-		var user = "<?php echo $_SESSION["user_name"]; ?>";	
-		$.getJSON("./users/"+user+"/"+file+"", function (resultado) {
+    console.log(labels[0]);
 
-			$.each(resultado[0], function(index, value){
-				$("#chart-dados").html(value);
-			});
-			$.each(resultado[1], function (index, value){	
-				// console.log(value);
-				col2.push(value[0]);
-				col1.push(value[1]);
-
-			});
-			var chart = c3.generate({
-				data: {
-					columns:[
-					col1,
-					col2
-					]
-				}
-			});
-		});
-	};
-
+    var chart = c3.generate({
+      data: {
+        columns:[
+          col
+        ],
+      }
+    });
+  });
+};
 	$(".btn-PreviewGraph").on("click", function (e) {
 		e.preventDefault();
 		$(".list-graph").removeClass("active");
@@ -204,13 +206,5 @@ if (!isset($_SESSION["user_id"])){
 	$(function () {
 		$(".list-chart a:eq(0)").click();
 	});
-
-	$(".sidebar .tab-cog li a").on("click", function(){
-		var div = $(this).attr("href");
-		div = $(div);
-		$(".tab-content").removeClass("show");
-		div.addClass("show");
-	});
 </script>
 </html>
-

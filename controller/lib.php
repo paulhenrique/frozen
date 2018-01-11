@@ -1,34 +1,59 @@
-<?php
+\<?php
 session_start();
 function alert($mensagem){
 	echo "<script>".$mensagem."</script>";
 }
-	function setAlert($page, $NumErro){ //Setar Alertas de erro e avisos via Get nas páginas
-		// header("location:".$page."?alert=".$NumErro.""); //PROBLEMAS COM SERVICE WORKERS/APPCACHE
-		echo "<script>location.href='".$page."?alert=".$NumErro."'</script>";  //POSSÍVEL SOLUÇÃO
-	}
+function setAlert($page, $NumErro){
+	// header("location:".$page."?alert=".$NumErro.""); //PROBLEMAS COM SERVICE WORKERS/APPCACHE
+	echo "<script>location.href='".$page."?alert=".$NumErro."'</script>";  //POSSÍVEL SOLUÇÃO
+}
+function verify_login(){
+	include 'conn.php';
 
+	$senha = sha1($_POST["senha"]);
+	$email = $_POST["email"];
+
+	$query = "SELECT * FROM usuario WHERE email = '".$email."' and senha = '".$senha."'";
+	$result = mysqli_query($conn,$query);
+
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+				$_SESSION["user"]["id"] = $row["id"];
+				$_SESSION["user"]["user"] = $row["user"];
+				$_SESSION["user"]["nome"] = $row["nome"];
+				$_SESSION["user"]["email"] = $row["email"];
+		}
+		return true;
+	}else{
+		return false;
+	}
+	$conn->close();
+}
+function isset_login(){
+	if (isset($_SESSION["user"]))
+		header("location: applications/");
+}
+function is_not_set_login(){
+	if (!isset($_SESSION["user"]))
+		setAlert("login.php", 3);
+}
 function getAlert(){  //Verificar erros de acordo com o número
 	if (isset($_GET["alert"])) {
 		$alert = $_GET["alert"];
-		if ($alert == 1) {
+		if ($alert == 1)
 			return "Preencha os campos para fazer login...";
-		}
-		if ($alert == 2) {
+		if ($alert == 2)
 			return "Senha incorreta!";
-		}
-		if ($alert == 3) {
+		if ($alert == 3)
 			return "Você tem que estar logado para acessar à essa página!";
-		}
-		if ($alert == 4) {
+		if ($alert == 4)
 			return "Usuário não encontrado!";
-		}
 	}
 }
 
 function checkLogin(){ //checar se a sessão que confirma o login foi criada
 	if (!isset($_SESSION["user_id"])){
-		setAlert("login.php", 3);		
+		setAlert("login.php", 3);
 		die();
 	}else{
 		header("location:admin.php");
@@ -122,7 +147,7 @@ function listChart(){
 	$result = mysqli_query($conn,"SELECT * FROM charts WHERE idAutor=".$_SESSION["usuario"]." ");
 	if ($result->num_rows > 0) {
 		$cont = 0;
-		while($row = $result->fetch_assoc()) {	
+		while($row = $result->fetch_assoc()) {
 			if ($cont == 0) {
 				echo "<a href='graph.php?graph=".$row['id']."' class='btn-PreviewGraph' ><li class='list-group-item list-graph active'>".$row['titulo']."</li></a>";
 				$cont ++;
@@ -137,19 +162,20 @@ function listChart(){
 
 	$conn->close();
 }
-
-function listCharts(){
+function console_log($string){
+		echo "<script>console.log('".$string."')</script>";
+}
+function create_list_charts(){
 	$types = array('json');
-	if ($handle = opendir('users/'.$_SESSION["user_name"].'/')) {
+	if ($handle = opendir('../users/'.$_SESSION["user"]["user"].'/')) {
+	$title = array();
 		while ($entry = readdir( $handle ) ) {
 			$ext = strtolower( pathinfo( $entry, PATHINFO_EXTENSION) );
-			if(in_array($ext, $types)) 
-				echo "<a class='btn-PreviewGraph t' data-file='".$entry."'>
-			<li class='list-group-item list-graph'> <i class='fa fa-line-chart'></i>  ".pathinfo($entry, PATHINFO_FILENAME)."</li>
-			</a>";
-
+			if(in_array($ext, $types))
+				$title[] = $entry;
 		}
 		closedir($handle);
-	}    
+		return $title;
+	}
 }
 ?>

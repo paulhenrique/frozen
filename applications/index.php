@@ -1,9 +1,7 @@
 <?php
-session_start();
-include'lib.php';
-if (!isset($_SESSION["user_id"])){
-	setAlert("login.php", 3);
-}
+include'../controller/lib.php';
+if(!isset($_SESSION["user"]))
+		header("location: ../");
 ?>
 <!DOCTYPE html>
 <html manifest="manifest.appcache">
@@ -28,23 +26,23 @@ if (!isset($_SESSION["user_id"])){
 	<meta name="msapplication-TileImage" content="img/ico.png">
 	<meta name="msapplication-TileColor" content="#292b2c">
 
-	<link rel="stylesheet" type="text/css" href="view/css/tether.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/c3.min.css">
-	<link rel="stylesheet" type="text/css" href="view/css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/tether.min.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/c3.min.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/estilo.css">
 </head>
 <body class="bg-light">
 
 	<div class="sidebar">
 		<h1 >Frozen Waves</h1>
 		<ul class="border-list">
-			<li><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?php echo $_SESSION["user_name"];?></span></a></li>
+			<li><i class="fa fa-user-circle" aria-hidden="true"></i> <span class="label"><?= $_SESSION["user"]["nome"];?></span></a></li>
 		</ul>
 		<ul class="">
 			<li class="active"><a href="start.php"><i class="fa fa-th" aria-hidden="true"></i> <span class="label">Aplicações</span></a></li>
 			<li><a href="configuracoes.php"><i class="fa fa-cog" aria-hidden="true"></i> <span class="label">Configurações</span></a></li>
-			<li><a href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> <span class="label">Sair</span></a></li>
+			<li><a href="../controller/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i> <span class="label">Sair</span></a></li>
 		</ul>
 	</div>
 	<div class="bar-top box-shadow">
@@ -68,12 +66,12 @@ if (!isset($_SESSION["user_id"])){
 		<div class="mt-5 row">
 			<div class="col-3">
 				<a href="frozen-IFSP.php">
-					<img class="box-shadow card-img-top border-radius" src="view/img/logo_frozen.png" alt="Card image cap">
+					<img class="box-shadow card-img-top border-radius" src="../view/img/logo_frozen.png" alt="Card image cap">
 				</a>
 			</div>
 			<div class="col-3">
 				<a href="frozen-USP.php">
-					<img class="box-shadow card-img-top border-radius" src="view/img/logo_frozen.png" alt="Card image cap">
+					<img class="box-shadow card-img-top border-radius" src="../view/img/logo_frozen.png" alt="Card image cap">
 				</a>
 			</div>
 		</div>
