@@ -1,11 +1,11 @@
+<?php
+require_once'controller/lib.php';
+$verif = new Util;
+$verif->mode = 'ativo';
+$verif->isset_login();
+?>
 <!DOCTYPE html>
 <html manifest="appcache.manifest">
-<?php
-include'controller/lib.php';
-if(isset($_SESSION["user"])){
-	header("location: applications/");
-}
-?>
 <head>
 	<title>Frozen Waves</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -108,9 +108,9 @@ if(isset($_SESSION["user"])){
 				</div>
 			</div>
 		</div>
-		//<div class="pt-1 container-fluid">
-		//	<p class="lead">v0.01</p>
-		//</div>
+		<div class="pt-1 container-fluid">
+			<p class="lead">v0.01</p>
+		</div>
 	</body>
 	<script type="text/javascript" src="view/js/jquery.min.js"></script>
 	<script type="text/javascript" src="view/js/smoothscroll.js"></script>
@@ -120,7 +120,7 @@ if(isset($_SESSION["user"])){
 	<script type="text/javascript">
 		$(function(){
 			var windowHeight = $(window).height();
-			$(".header").height(windowHeight);
-	});
-</script>
-</html>
+			$(".header").height("600");
+		});
+	</script>
+	</html>

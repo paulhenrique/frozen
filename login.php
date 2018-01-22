@@ -1,6 +1,6 @@
 <?php
 include'controller/lib.php';
-verify_login();
+// verify_login();
 ?>
 <!DOCTYPE html>
 <html>

@@ -28,7 +28,7 @@
 	<div class="container">
 		<div class="col-12 col-md-4 mx-auto mt-5 pt-5">
 			<h2 class="mt-5 thin">Cadastro</h2>
-			<form action="cadastrar.php" method="post">
+			<form action="controller/verify.php?a=cadastro" method="post">
 				<div class="input-group mt-4">
 					<input type="text" class="form-control" placeholder="Nome" name="nome" required autofocus>
 				</div>
